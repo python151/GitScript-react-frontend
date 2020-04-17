@@ -31,10 +31,10 @@ class Login extends React.Component {
         // just some code I had lying around and decided to use
         let params = `?username=${document.getElementById('username').value}&password=${document.getElementById('password').value}`;
 
-        fetch('http://localhost:8000/login/'+params, {
+        fetch('https://scripterapi.pythonanywhere.com/login/'+params, {
             method: "GET",
             headers: {
-                'Access-Control-Allow-Origin': 'http://localhost:8000'
+                'Access-Control-Allow-Origin': 'https://scripterapi.pythonanywhere.com'
             }
         })
         .then((res) => res.json())

@@ -68,7 +68,7 @@ class Editor extends React.Component {
     sendFileToApi(name, fileVal) {
         name = name.replace(".", "00000");
         let sess = localStorage.getItem("session-key");
-        fetch('http://localhost:8000/save/'+this.state.scriptId+"/"+name+"/?session-key="+sess, {
+        fetch('https://scripterapi.pythonanywhere.com/save/'+this.state.scriptId+"/"+name+"/?session-key="+sess, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -109,7 +109,7 @@ class Editor extends React.Component {
 
     getFile = () => {
         let sess = localStorage.getItem("session-key");
-        fetch('http://localhost:8000/get/'+this.state.scriptId+"?session-key="+sess)
+        fetch('https://scripterapi.pythonanywhere.com/get/'+this.state.scriptId+"?session-key="+sess)
         .then(response => response.json())
         .then(response => {
             if (response.data.success) {
@@ -163,7 +163,7 @@ class Editor extends React.Component {
             let name = current.name;
             name = name.replace(".", "00000");
             let sess = localStorage.getItem("session-key");
-            fetch('http://localhost:8000/delete/'+this.state.scriptId+"/"+name+"/?session-key="+sess, {
+            fetch('https://scripterapi.pythonanywhere.com/delete/'+this.state.scriptId+"/"+name+"/?session-key="+sess, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -214,7 +214,7 @@ class Editor extends React.Component {
             }
 
             let sess = localStorage.getItem("session-key");
-            fetch('http://localhost:8000/change/filename/?session-key='+sess, {
+            fetch('https://scripterapi.pythonanywhere.com/change/filename/?session-key='+sess, {
                 method: "PUT",
                 body:JSON.stringify({
                     scriptId: this.state.scriptId,
@@ -256,7 +256,7 @@ class Editor extends React.Component {
         this.saveScript();
         
         let sess = localStorage.getItem("session-key");
-        fetch("http://localhost:8000/run/"+this.state.scriptId+"/?session-key="+sess)
+        fetch("https://scripterapi.pythonanywhere.com/run/"+this.state.scriptId+"/?session-key="+sess)
         .then(response => response.json())
         .then(response =>  this.handleRunResponse(response))
     }

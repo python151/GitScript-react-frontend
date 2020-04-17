@@ -20,7 +20,7 @@ class SignUp extends React.Component {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
         let email = document.getElementById("email").value;
-        fetch('http://localhost:8000/signup/', {
+        fetch('https://scripterapi.pythonanywhere.com/signup/', {
             method: 'POST',
             body: JSON.stringify({
                 username: username,

@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
 
     getScripts = () => {
         let sess = localStorage.getItem("session-key");
-        fetch('http://localhost:8000/get/scripts/?session-key='+sess)
+        fetch('https://scripterapi.pythonanywhere.com/get/scripts/?session-key='+sess)
         .then(response => response.json())
         .then(response => {
             this.setState({
@@ -34,7 +34,7 @@ export default class Dashboard extends React.Component {
 
     createScript = (name, description) => {
         let sess = localStorage.getItem("session-key");
-        fetch("http://localhost:8000/create/?session-key="+sess, {
+        fetch("https://scripterapi.pythonanywhere.com/create/?session-key="+sess, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -62,7 +62,7 @@ export default class Dashboard extends React.Component {
 
     deleteScript = (id) => {
         let sess = localStorage.getItem("session-key");
-        fetch("http://localhost:8000/delete/script/"+id+"/?session-key="+sess, {
+        fetch("https://scripterapi.pythonanywhere.com/delete/script/"+id+"/?session-key="+sess, {
             method: "DELETE",
         })
         .then(response => this.handleDeleteResponse(response))

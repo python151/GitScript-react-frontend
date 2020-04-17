@@ -27,7 +27,7 @@ export default class User extends React.Component {
     }
 
     getUserInfo = () => {
-        fetch("http://localhost:8000/user/"+this.state.userId+"/")
+        fetch("https://scripterapi.pythonanywhere.com/user/"+this.state.userId+"/")
         .then(response => response.json())
         .then(response => this.handleUserResponse(response))
         .catch(err => {
