@@ -89,17 +89,6 @@ export default Home = props => (
             <h1 className="display-5" className={{
                 margin: .5+'em'
             }}>Home</h1>
-
-            <div className="container-fluid" style={{
-                backgroundColor: "#fafafa"
-            }}>
-                <div className="display-4">
-                    sf
-                </div>
-                <div className="lead">
-                    lorem
-                </div>
-            </div>
             
             <div className="popular-scripts">
                 <div className="display-4">Popular Scipts</div>
