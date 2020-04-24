@@ -1,5 +1,6 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
+import Loading from './Loading'
 
 const ListFile = props => (
     <li onClick={() => {props.changeCurr(props.file.index)}} onDoubleClick={() => props.change(props.file.index)}>
@@ -32,19 +33,14 @@ class Editor extends React.Component {
         let id = url[url.length-1];
         this.state = {
             currentFile: {
-                name: "None",
-                value: "Files for this script have not been found. Please create one now.",
+                name: "",
+                value: "",
                 index: 0,
             },
-            files: [
-                {
-                    name: "None",
-                    value: "Files for this script have not been found. Please create one now.",
-                    index: 0,
-                }
-            ],
+            files: [],
             scriptId: id,
             scriptName: null,
+            initLoad: true,
         }
     }
 
@@ -120,6 +116,7 @@ class Editor extends React.Component {
                 this.setState({
                     files: response.data.files,
                     scriptName: response.data.name,
+                    initLoad: false,
                 })
             } else {
                 alert("unknown error")
@@ -263,7 +260,8 @@ class Editor extends React.Component {
 
     render() {
         return (
-            <div className="editor">                                         
+            <div className="editor">
+                    <Loading loading={this.state.initLoad} />                                     
                     <h1 className="display-4" style={{margin: .5+"em"}}>
                         {this.state.scriptName}
                     </h1>
