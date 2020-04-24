@@ -92,7 +92,9 @@ export default Home = props => (
             
             <div className="popular-scripts">
                 <div className="display-4">Popular Scipts</div>
-                <div className="row text-center">
+                <div className="row text-center" style={{
+                    margin: 1+'em'
+                }}>
                     {popScripts.map((script) => (
                     <div className="col">
                         <div class="card" style={{width: 18+'em'}}>

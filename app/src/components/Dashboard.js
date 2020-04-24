@@ -1,12 +1,12 @@
 import React from 'react';
-
-
+import Loading from './Loading'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             scripts: [],
+            loading: true,
         }
     }
 
@@ -16,7 +16,8 @@ export default class Dashboard extends React.Component {
         .then(response => response.json())
         .then(response => {
             this.setState({
-                scripts: response.data
+                scripts: response.data,
+                loading: false,
             })
         })
         .catch((err) => {
@@ -81,6 +82,7 @@ export default class Dashboard extends React.Component {
                 <h1>Dashboard</h1>
 
                 <div className="row">
+                    <Loading loading={this.state.loading} />
                     {this.state.scripts.map(script => (
                         <div class="col card" style={{width: 18+'em', margin: 2+'em', minWidth: 275+'px'}}>
                             <div class="card-body">
